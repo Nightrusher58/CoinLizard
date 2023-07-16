@@ -1,6 +1,7 @@
 import React from "react";
 import list from "../Data/data";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -27,16 +28,18 @@ const Home = () => {
 
         return (
           <div key={uuid}>
-            <div>
-              <img src={iconUrl} alt={name} width="25px" />
-              <h5>{name}</h5>
-              <p>{symbol}</p>
-              <p>${price}</p>
+            <Link to={`/coindetail/${uuid}`}>
               <div>
-                <p>Market Rank: {rank}</p>
-                <p>Market Cap: {marketCap}</p>
+                <img src={iconUrl} alt={name} width="25px" />
+                <h5>{name}</h5>
+                <p>{symbol}</p>
+                <p>${price}</p>
+                <div>
+                  <p>Market Rank: {rank}</p>
+                  <p>Market Cap: {marketCap}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         );
       })}
